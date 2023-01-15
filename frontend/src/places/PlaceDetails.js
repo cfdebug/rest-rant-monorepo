@@ -77,8 +77,6 @@ function PlaceDetails() {
 
 	}
 
-
-
 	let comments = (
 		<h3 className="inactive">
 			No comments yet!
@@ -110,6 +108,21 @@ function PlaceDetails() {
 		})
 	}
 
+let placeActions = null
+
+if (currentUser?.role === 'admin') {
+    placeActions = (
+		<div>
+            <button className="btn btn-warning" onClick={editPlace}>
+                Edit
+            </button>
+            <button type="submit" className="btn btn-danger" onClick={deletePlace}>
+                Delete
+            </button>
+		</div>
+	)
+}
+
 
 	return (
 		<main>
@@ -137,12 +150,7 @@ function PlaceDetails() {
 						Serving {place.cuisines}.
 					</h4>
 					<br />
-					<a className="btn btn-warning" onClick={editPlace}>
-						Edit
-					</a>{` `}
-					<button type="submit" className="btn btn-danger" onClick={deletePlace}>
-						Delete
-					</button>
+					{placeActions}
 				</div>
 			</div>
 			<hr />
